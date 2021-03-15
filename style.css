@@ -22,7 +22,7 @@ html{
 	/*overflow: hidden;*/
 	justify-content: center;
 
-	transform: translateY(-170px);
+	transform: translateY(-190px);
 	transition: 0.5s;
 }
 .main_div .top_bar .active2{
@@ -178,7 +178,7 @@ img{
 	position: absolute;
 	background-color: white;
 	border-radius: 2rem;
-	margin: 0 14rem 12rem 0rem;
+	margin: 0 14rem 12.2rem 0rem;
 
 
 	justify-content: center;
