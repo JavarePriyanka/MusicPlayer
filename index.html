@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>Morden Music</title>
-	<link rel="stylesheet" type="text/css" href="csss/style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
 </head>
 <body>
@@ -28,7 +28,7 @@
 				<img src="img/kafi.jpg" alt="">
 				
 			</div>
-			<audio src="music/kafi.mp3" controls="" style="display: none"></audio>
+			<audio src="s1.mp3" controls="" style="display: none"></audio>
 
 			<!---- controls---->
 			<div class="music_controls">
@@ -43,25 +43,25 @@
 			<div class="p_song">
 				<p id="p_title">Tum Prem Ho</p>
 				<p id="p_artist">Mohit Lalwaini</p>
-				<!--<button id="btn1"><i class="fas fa-play main-button"  ></i></button>-->
+				
 			</div>
 
 			<div class="p_song">
 				<p id="p_title">Qaafirana</p>
 				<p id="p_artist">Arjit Singh,Nikhita Gandhi</p>
-				<!--<button><i class="fas fa-play main-button"  ></i></button>-->
+				
 			</div>
 
 			<div class="p_song">
 				<p id="p_title">Dil Jaaniye</p>
 				<p id="p_artist">Tulsi Kumar,Jubin Nautiyal,Payal Dev</p>
-				<!--<button><i class="fas fa-play main-button"  ></i></button>-->
+				
 			</div>
 
 			<div class="p_song">
 				<p id="p_title">Naina</p>
 				<p id="p_artist">Arjit Singh</p>
-				<!--<button id="btn4"><i class="fas fa-play main-button"  ></i></button>-->
+				
 
 
 			</div>
@@ -160,8 +160,8 @@
 		 const loadsong=(songs)=>{
 		 	title.textContent=songs.title;
 		 	artist.textContent=songs.artist;
-		 	music.src="music/"+songs.name+".mp3";
-		 	img.src="img/"+songs.name+".jpg";
+		 	music.src=songs.name+".mp3";
+		 	img.src=+songs.name+".jpg";
 		 };
 		 SongIndex = 0;
 		//loadsong(songs[0]);
