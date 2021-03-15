@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Morden Music</title>
+	<link rel="stylesheet" type="text/css" href="csss/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+</head>
+<body>
+
+
+	<div class="main_div">
+
+		<div class="music_container">
+			<div class="top_bar">
+			<button onclick="sidebar()"><i class="fas fa-chevron-right"></i></button>
+			<div class="options">
+				<button id="g1"><i class="fas fa-music"></i></button>
+				<button id="g2"><i class="fas fa-volume-up"></i></button>
+				<button id="comment"><i class="far fa-comment-dots"></i></button>
+			</div>
+			<button onclick="open_p()"><i class="fas fa-ellipsis-v"></i></button>
+		</div>
+			<h2 id="title">Qafirana</h2>
+			<h3 id="artist">Artist</h3>
+			<div class="img_container">
+				<img src="img/kafi.jpg" alt="">
+				
+			</div>
+			<audio src="music/kafi.mp3" controls="" style="display: none"></audio>
+
+			<!---- controls---->
+			<div class="music_controls">
+				<i class="fas fa-backward" id="prev" title="Previous"></i>
+				<i class="fas fa-play main-button" id="play" title="Play"></i>
+				<i class="fas fa-forward" id="next" title="Next"></i>
+
+			</div>
+			<!-- playlist songs -->
+		<div class="playlist">
+			<h5>Song List</h5>
+			<div class="p_song">
+				<p id="p_title">Tum Prem Ho</p>
+				<p id="p_artist">Mohit Lalwaini</p>
+				<!--<button id="btn1"><i class="fas fa-play main-button"  ></i></button>-->
+			</div>
+
+			<div class="p_song">
+				<p id="p_title">Qaafirana</p>
+				<p id="p_artist">Arjit Singh,Nikhita Gandhi</p>
+				<!--<button><i class="fas fa-play main-button"  ></i></button>-->
+			</div>
+
+			<div class="p_song">
+				<p id="p_title">Dil Jaaniye</p>
+				<p id="p_artist">Tulsi Kumar,Jubin Nautiyal,Payal Dev</p>
+				<!--<button><i class="fas fa-play main-button"  ></i></button>-->
+			</div>
+
+			<div class="p_song">
+				<p id="p_title">Naina</p>
+				<p id="p_artist">Arjit Singh</p>
+				<!--<button id="btn4"><i class="fas fa-play main-button"  ></i></button>-->
+
+
+			</div>
+		</div>
+
+
+		
+			
+		</div>
+				
+	</div>
+	<script>
+		let playlist = document.querySelector('.playlist');
+		let options = document.querySelector('.options');
+
+		function open_p(){
+			playlist.classList.toggle('active');
+		}
+
+		function sidebar(){
+			options.classList.toggle('active2');
+			
+		}
+
+
+		const img=document.querySelector("img");
+		const music=document.querySelector("audio")
+		 let isPlaying=true;
+		//play function which is in Html.
+		const play=document.getElementById("play");
+		const title=document.getElementById("title");
+		const artist=document.getElementById("artist");
+		const next=document.getElementById("next");
+		const prev=document.getElementById("prev");
+
+		//songs data
+
+		const songs=[
+		{
+			name:"s6",
+			title:"Tum Prem Ho",
+			artist:"Mohit Lalwaini",
+		},
+		{
+			name:"s1",
+			title:"Qaafirana",
+			artist:"Arjit Singh,Nikhita Gandhi",
+
+		},
+		{
+			name:"s2",
+			title:"Dil Jaaniye",
+			artist:"Tulsi Kumar,Jubin Nautiyal,Payal Dev",
+		},
+		{
+			name:"s3",
+			title:"Naina",
+			artist:"Arjit Singh",
+		},
+		
+
+		]
+
+
+
+
+		let isplay=false;
+		//play.addEventListener('click',()=>{
+			const Musicplay=()=>{
+			isplay=true;
+			music.play();
+			play.classList.replace("fa-play","fa-pause");
+			img.classList.add("anime");
+
+		};
+		//for pause
+		
+		//play.addEventListener('click',()=>{
+			const Musicpause=()=>{
+			isplay=false;
+			music.pause();
+			play.classList.replace("fa-pause","fa-play");
+			img.classList.remove("anime");
+
+		};
+
+		play.addEventListener('click',()=>{
+			if(isplay){
+				Musicpause();
+			}
+			else{
+				Musicplay();
+			}
+		});
+		//change song
+		 const loadsong=(songs)=>{
+		 	title.textContent=songs.title;
+		 	artist.textContent=songs.artist;
+		 	music.src="music/"+songs.name+".mp3";
+		 	img.src="img/"+songs.name+".jpg";
+		 };
+		 SongIndex = 0;
+		//loadsong(songs[0]);
+		loadsong(songs[SongIndex]);
+		/*const NextSong = () => {
+			SongIndex=(SongIndex+1)%songs.length;
+			loadsong(songs[SongIndex]);
+			//loadsong(songs[songIndex]);
+		};*/
+		const NextSong = () =>{
+			//SongIndex++;
+			SongIndex=(SongIndex + 1)%songs.length;
+			loadsong(songs[SongIndex]);
+			Musicplay();
+
+
+		};
+		const prevSong = ()=>{
+			SongIndex = (SongIndex-1 + songs.length)% songs.length;
+			loadsong(songs[SongIndex]);
+			Musicplay();
+
+		};
+		next.addEventListener("click",NextSong);
+		prev.addEventListener("click",prevSong);
+		
+
+
+	</script>
+</body>
+</html>
